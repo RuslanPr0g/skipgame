@@ -6,14 +6,14 @@
       [ngClass]="{ 'player-active': currentPlayer === 1, 'player-blocked': rBlocked }"
       (click)="skip(1)"
     >
-      {{ currentPlayer === 1 ? "<>" : "" }}
+      {{ currentPlayer === 1 ? "🐱" : "" }}
     </button>
     <button
       class="player player-2"
       [ngClass]="{ 'player-active': currentPlayer === 2, 'player-blocked': lBlocked }"
       (click)="skip(2)"
     >
-      {{ currentPlayer === 2 ? "<>" : "" }}
+      {{ currentPlayer === 2 ? "🐱" : "" }}
     </button>
   </ng-container>
   <ng-template #menu>
