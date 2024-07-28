@@ -17,6 +17,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   winner: Player | null = null;
 
+  restartEnabled: boolean = true;
+
   subscription?: Subscription;
 
   gameover: boolean = true;
@@ -65,6 +67,8 @@ export class AppComponent implements OnInit, OnDestroy {
   private endGame() {
     this.gameover = true;
     this.winner = this.notCurrentPlayer;
+    this.restartEnabled = false;
+    setTimeout(() => this.restartEnabled = true, 2000)
   }
 
   private getRandomNumber(min: number, max: number): number {

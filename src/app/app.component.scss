@@ -1,7 +1,7 @@
 .playground {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background-color: #333;
     justify-content: center;
     align-items: center;
@@ -14,13 +14,21 @@
     }
 
     & .title {
-        font-size: 8em;
+        font-size: 2em;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        margin-bottom: 100px;
     }
 }
 
 .winner {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
 
     &-1 {
         background-color: #9d0e0e;
@@ -32,34 +40,76 @@
 }
 
 .player {
-    font-family: 'Courier New', Courier, monospace;
-    width: 50vw;
-    height: 100vh;
+    font-family: "Courier New", Courier, monospace;
+    width: 100vw;
+    height: 50vh;
     background-color: #333;
     color: #333;
+    transition: ease-in-out 500ms;
 
     &-active {
         background-color: #167c14;
         color: #fafafa;
 
-        font-size: 8em;
+        font-size: 2em;
         writing-mode: vertical-rl;
         text-orientation: mixed;
     }
 
     &-1 {
-        border-left: #9d0e0e solid 50px;
+        border-top: #9d0e0e solid 50px;
     }
 
     &-2 {
-        border-right: #0f868a solid 50px;
+        border-bottom: #0f868a solid 50px;
     }
 }
 
 .ready {
-    font-family: 'Roboto', Courier, monospace;
+    font-family: "Roboto", Courier, monospace;
     height: 30%;
     width: 70%;
-    font-size: 10em;
+    font-size: 2em;
     background-color: #10ab56;
+
+    &-disabled {
+        background-color: #76960b;
+    }
+}
+
+.glow {
+    font-size: 2em;
+    color: red;
+    text-shadow:
+        0 0 5px red,
+        0 0 10px red,
+        0 0 20px red,
+        0 0 30px red,
+        0 0 40px red,
+        0 0 50px red,
+        0 0 60px red;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow:
+            0 0 10px red,
+            0 0 20px red,
+            0 0 30px red,
+            0 0 40px red,
+            0 0 50px red,
+            0 0 60px red,
+            0 0 70px red;
+    }
+    to {
+        text-shadow:
+            0 0 20px red,
+            0 0 30px red,
+            0 0 40px red,
+            0 0 50px red,
+            0 0 60px red,
+            0 0 70px red,
+            0 0 80px red;
+    }
 }
