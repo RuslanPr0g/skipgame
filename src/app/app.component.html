@@ -1,4 +1,6 @@
 <div class="blur" *ngIf="blur"></div>
+<div class="box box-1" [ngClass]="{ 'box-expanded': gameover && winner === 1 }"></div>
+<div class="box box-2" [ngClass]="{ 'box-expanded': gameover && winner === 2 }"></div>
 <main class="playground" [ngClass]="{ 'playground-menu': gameover }">
   <ng-container *ngIf="!gameover; else menu">
     <button
@@ -6,23 +8,22 @@
       [ngClass]="{ 'player-active': currentPlayer === 1, 'player-blocked': rBlocked }"
       (click)="skip(1)"
     >
-      {{ currentPlayer === 1 ? "🐱" : "" }}
+      {{ currentPlayer === 1 ? "😽" : "" }}
     </button>
     <button
       class="player player-2"
       [ngClass]="{ 'player-active': currentPlayer === 2, 'player-blocked': lBlocked }"
       (click)="skip(2)"
     >
-      {{ currentPlayer === 2 ? "🐱" : "" }}
+      {{ currentPlayer === 2 ? "🙀" : "" }}
     </button>
   </ng-container>
   <ng-template #menu>
     <div *ngIf="winner" class="title">
-      WINNER:
       <div
         class="winner glow"
         [ngClass]="{ 'winner-1': winner === 1, 'winner-2': winner === 2 }"
-      ></div>
+      >{{ winner === 1 ? '😽' : '🙀' }}</div>
     </div>
     <button class="ready" (click)="start()" [disabled]="!restartEnabled" [ngClass]="{ 'ready-disabled': !restartEnabled }">READY</button>
   </ng-template>

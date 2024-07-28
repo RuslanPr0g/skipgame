@@ -30,12 +30,26 @@
     height: 100px;
     border-radius: 100%;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 40px;
+    vertical-align: middle;
+    line-height: 2;
+
     &-1 {
         background-color: #9d0e0e;
+
+        color: rgba(255, 255, 255, 1);
+        box-shadow: 0 15px 105px rgba(199, 34, 34, 0.7);
     }
 
     &-2 {
         background-color: #0f868a;
+
+        color: rgba(255, 255, 255, 1);
+        box-shadow: 0 15px 105px rgba(15, 162, 175, 0.7);
     }
 }
 
@@ -48,21 +62,27 @@
     color: #333;
     transition: ease-in-out 500ms;
 
+    font-size: 100px;
+    vertical-align: middle;
+    line-height: 2;
+
     &-active {
-        background-color: #167c14;
         color: #fafafa;
 
-        font-size: 2em;
         writing-mode: vertical-rl;
         text-orientation: mixed;
+
+        opacity: 0.9;
     }
 
     &-1 {
+        background-color: #9d0e0e;
         border-top: #9d0e0e solid 50px;
         border-bottom: #333 solid 25px;
     }
 
     &-2 {
+        background-color: #0f868a;
         border-top: #333 solid 25px;
         border-bottom: #0f868a solid 50px;
     }
@@ -74,6 +94,7 @@
 
 .ready {
     font-family: "Roboto", Courier, monospace;
+    font-weight: 800;
     height: 30%;
     width: 70%;
     font-size: 2em;
@@ -81,44 +102,13 @@
 
     &-disabled {
         background-color: #76960b;
-    }
-}
 
-.glow {
-    font-size: 2em;
-    color: red;
-    text-shadow:
-        0 0 5px red,
-        0 0 10px red,
-        0 0 20px red,
-        0 0 30px red,
-        0 0 40px red,
-        0 0 50px red,
-        0 0 60px red;
-    animation: glow 1s ease-in-out infinite alternate;
-}
+        color: rgba(255, 255, 255, 1);
+        box-shadow: 0 15px 105px rgba(93, 193, 11, 0.7);
+    }
 
-@keyframes glow {
-    from {
-        text-shadow:
-            0 0 10px red,
-            0 0 20px red,
-            0 0 30px red,
-            0 0 40px red,
-            0 0 50px red,
-            0 0 60px red,
-            0 0 70px red;
-    }
-    to {
-        text-shadow:
-            0 0 20px red,
-            0 0 30px red,
-            0 0 40px red,
-            0 0 50px red,
-            0 0 60px red,
-            0 0 70px red,
-            0 0 80px red;
-    }
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 15px 105px rgba(11, 193, 105, 0.7);
 }
 
 .blur {
@@ -128,4 +118,39 @@
     backdrop-filter: blur(2px) !important;
     top: 0;
     left: 0;
+    z-index: 100;
+}
+
+.box {
+    position: absolute;
+    width: 100vw;
+    height: 25px;
+    animation: none;
+
+    &-expanded {
+        animation: expandHeight 0.5s forwards; /* Animation name, duration, and fill mode */
+    }
+
+    &-1 {
+        background-color: #9d0e0e;
+        top: 0;
+    }
+
+    &-2 {
+        background-color: #0f868a;
+        bottom: 0;
+    }
+}
+
+@keyframes expandHeight {
+    from {
+        height: 50px;
+        opacity: 1;
+        z-index: 100;
+    }
+    to {
+        height: 100vh;
+        opacity: 0;
+        z-index: -1;
+    }
 }
