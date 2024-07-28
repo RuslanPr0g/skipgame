@@ -18,6 +18,8 @@ export class AppComponent implements OnInit, OnDestroy {
   rBlocked = false;
   lBlocked = false;
 
+  blur: boolean = false;
+
   currentPlayer: Player = 1;
 
   winner: Player | null = null;
@@ -43,12 +45,31 @@ export class AppComponent implements OnInit, OnDestroy {
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    const now = Date.now();
-
     if (event.key === ' ' || event.key === 'Enter') {
       if (this.gameover) {
         this.start();
       }
+      return;
+    }
+
+    if (this.gameover) return;
+
+    this.handleGameUpdate(event);
+  }
+
+  private handleGameUpdate(event: KeyboardEvent) {
+    const now = Date.now();
+
+    const variation = this.getRandomNumber(1, 100000);
+
+    if (
+      (((event.key === 'r' || event.key === '1') && this.currentPlayer === 1) ||
+        ((event.key === 'b' || event.key === '2') &&
+          this.currentPlayer === 2)) &&
+      variation % 2 === 0
+    ) {
+      this.blur = true;
+      setTimeout(() => (this.blur = false), 300);
       return;
     }
 
@@ -89,7 +110,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.winner = null;
 
     this.subscription = timer(0, 1000).subscribe(() => {
-      console.warn("running timer", this.timeToGameOver - this.seconds);
+      console.warn('running timer', this.timeToGameOver - this.seconds);
       if (this.seconds > this.timeToGameOver) {
         this.endGame();
         this.subscription?.unsubscribe();
@@ -109,7 +130,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.lBlocked = false;
     this.rPressTimes = [];
     this.lPressTimes = [];
-    setTimeout(() => this.restartEnabled = true, 2000)
+    setTimeout(() => (this.restartEnabled = true), 2000);
   }
 
   private getRandomNumber(min: number, max: number): number {
@@ -117,11 +138,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private trackKeyPress(key: 'r' | 'l', pressTimes: number[], now: number) {
-    pressTimes = pressTimes.filter(time => now - time <= 1000);
+    pressTimes = pressTimes.filter((time) => now - time <= 1000);
     pressTimes.push(now);
 
     if (pressTimes.length > 3) {
-      console.log(`Key "${key}" is pressed too frequently, it will be blocked for 500ms.`);
+      console.log(
+        `Key "${key}" is pressed too frequently, it will be blocked for 500ms.`
+      );
       if (key === 'r') {
         this.rBlocked = true;
       } else if (key === 'l') {
