@@ -1,0 +1,21 @@
+.playground {
+    display: flex;
+    flex-direction: row;
+}
+
+.player {
+    font-family: 'Courier New', Courier, monospace;
+    width: 50vw;
+    height: 100vh;
+    background-color: #333;
+    color: #333;
+
+    &-active {
+        background-color: #167c14;
+        color: #fafafa;
+
+        font-size: 8em;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+    }
+}
