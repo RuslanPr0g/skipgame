@@ -1,4 +1,4 @@
-<main class="playground">
+<main class="playground" [ngClass]="{ 'playground-menu': gameover }">
   <ng-container *ngIf="!gameover; else menu">
     <button
       class="player player-1"
@@ -16,6 +16,13 @@
     </button>
   </ng-container>
   <ng-template #menu>
+    <div *ngIf="winner" class="title">
+      WINNER:
+      <span
+        class="winner"
+        [ngClass]="{ 'winner-1': winner === 1, 'winner-2': winner === 2 }"
+      ></span>
+    </div>
     <button class="ready" (click)="start()">READY</button>
   </ng-template>
 </main>

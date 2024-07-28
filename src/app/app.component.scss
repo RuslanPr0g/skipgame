@@ -1,4 +1,5 @@
 .playground {
+    font-family: 'Courier New', Courier, monospace;
     display: flex;
     flex-direction: row;
     background-color: #333;
@@ -6,6 +7,28 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
+
+    &-menu {
+        flex-direction: column;
+        color: #fafafa;
+    }
+
+    & .title {
+        font-size: 8em;
+    }
+}
+
+.winner {
+    width: 50px;
+    height: 50px;
+
+    &-1 {
+        background-color: #9d0e0e;
+    }
+
+    &-2 {
+        background-color: #0f868a;
+    }
 }
 
 .player {
@@ -23,11 +46,19 @@
         writing-mode: vertical-rl;
         text-orientation: mixed;
     }
+
+    &-1 {
+        border-left: #9d0e0e solid 50px;
+    }
+
+    &-2 {
+        border-right: #0f868a solid 50px;
+    }
 }
 
 .ready {
     font-family: 'Roboto', Courier, monospace;
-    height: 70%;
+    height: 30%;
     width: 70%;
     font-size: 10em;
     background-color: #10ab56;
