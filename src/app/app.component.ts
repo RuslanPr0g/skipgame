@@ -45,6 +45,13 @@ export class AppComponent implements OnInit, OnDestroy {
   handleKeyboardEvent(event: KeyboardEvent) {
     const now = Date.now();
 
+    if (event.key === ' ' || event.key === 'Enter') {
+      if (this.gameover) {
+        this.start();
+      }
+      return;
+    }
+
     if (event.key === 'r' || event.key === '1') {
       if (this.rBlocked) {
         console.log('Key "r" is temporarily blocked.');
