@@ -1,16 +1,21 @@
 <main class="playground">
-  <button
-    class="player player-1"
-    [ngClass]="{ 'player-active': currentMove.Player === 1 }"
-    (click)="skip(1)"
-  >
-    {{ currentMove.Player === 1 && "<>" }}
-  </button>
-  <button
-    class="player player-2"
-    [ngClass]="{ 'player-active': currentMove.Player === 2 }"
-    (click)="skip(2)"
-  >
-    {{ currentMove.Player === 2 && "<>" }}
-  </button>
+  <ng-container *ngIf="!gameover; else menu">
+    <button
+      class="player player-1"
+      [ngClass]="{ 'player-active': currentPlayer === 1 }"
+      (click)="skip(1)"
+    >
+      {{ currentPlayer === 1 && "<>" }}
+    </button>
+    <button
+      class="player player-2"
+      [ngClass]="{ 'player-active': currentPlayer === 2 }"
+      (click)="skip(2)"
+    >
+      {{ currentPlayer === 2 && "<>" }}
+    </button>
+  </ng-container>
+  <ng-template #menu>
+    <button class="ready" (click)="start()">READY</button>
+  </ng-template>
 </main>
