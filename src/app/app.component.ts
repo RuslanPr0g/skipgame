@@ -13,10 +13,51 @@ type Player = 1 | 2;
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit, OnDestroy {
+  private CAT_EMOJIS: string[] = [
+    '😸', // Grinning Cat
+    '😺', // Smiling Cat
+    '😻', // Heart Eyes Cat
+    '😽', // Kissing Cat
+    '😼', // Smirking Cat
+    '😹', // Cat with Tears of Joy
+    '😿', // Crying Cat
+    '😾', // Pouting Cat
+    '🙀', // Weary Cat
+    '😺', // Smiling Cat with Open Mouth
+    '😸', // Grinning Cat with Smiling Eyes
+    '😹', // Cat Face with Tears of Joy
+    '😻', // Heart Eyes Cat
+    '😽', // Kissing Cat Face
+    '🙀', // Astonished Cat
+    '😾', // Pouting Cat Face
+    '😿', // Crying Cat Face
+    '😺', // Smiling Cat Face with Open Mouth
+    '😸', // Grinning Cat Face with Smiling Eyes
+    '😹', // Cat Face with Tears of Joy
+    '😻', // Heart Eyes Cat Face
+    '😽', // Kissing Cat Face
+    '😼', // Smirking Cat Face
+    '🙀', // Fearful Cat Face
+    '😿', // Crying Cat Face
+    '😾', // Angry Cat Face
+    '🙀', // Weary Cat Face
+    '😺', // Smiling Cat Face with Open Mouth
+    '😸', // Grinning Cat Face with Smiling Eyes
+    '😻', // Cat Face with Heart Eyes
+    '😽', // Kissing Cat Face
+    '😾', // Pouting Cat Face
+    '😿', // Crying Cat Face
+    '😹',  // Cat Face with Tears of Joy
+    '🙀', // Shocked Cat Face
+  ];
+
   private rPressTimes: number[] = [];
   private lPressTimes: number[] = [];
   rBlocked = false;
   lBlocked = false;
+
+  rCat: string = this.CAT_EMOJIS[0];
+  bCat: string = this.CAT_EMOJIS[1];
 
   blur: boolean = false;
 
@@ -35,6 +76,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.gameover = true;
+
+    this.rCat = this.getRandomCat();
+    this.bCat = this.getRandomCat();
+  }
+
+  private getRandomCat(): string {
+    const variant = this.getRandomNumber(0, this.CAT_EMOJIS.length - 1);
+    return this.CAT_EMOJIS[variant];
   }
 
   ngOnDestroy(): void {

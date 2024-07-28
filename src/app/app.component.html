@@ -8,14 +8,14 @@
       [ngClass]="{ 'player-active': currentPlayer === 1, 'player-blocked': rBlocked }"
       (click)="skip(1)"
     >
-      {{ currentPlayer === 1 ? "😽" : "" }}
+      {{ currentPlayer === 1 ? rCat : "" }}
     </button>
     <button
       class="player player-2"
       [ngClass]="{ 'player-active': currentPlayer === 2, 'player-blocked': lBlocked }"
       (click)="skip(2)"
     >
-      {{ currentPlayer === 2 ? "🙀" : "" }}
+      {{ currentPlayer === 2 ? bCat : "" }}
     </button>
   </ng-container>
   <ng-template #menu>
@@ -23,7 +23,7 @@
       <div
         class="winner glow"
         [ngClass]="{ 'winner-1': winner === 1, 'winner-2': winner === 2 }"
-      >{{ winner === 1 ? '😽' : '🙀' }}</div>
+      >{{ winner === 1 ? rCat : bCat }}</div>
     </div>
     <button class="ready" (click)="start()" [disabled]="!restartEnabled" [ngClass]="{ 'ready-disabled': !restartEnabled }">READY</button>
   </ng-template>
