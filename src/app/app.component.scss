@@ -58,10 +58,16 @@
 
     &-1 {
         border-top: #9d0e0e solid 50px;
+        border-bottom: #333 solid 25px;
     }
 
     &-2 {
+        border-top: #333 solid 25px;
         border-bottom: #0f868a solid 50px;
+    }
+
+    &-blocked {
+        background-color: #5a730a !important;
     }
 }
 
